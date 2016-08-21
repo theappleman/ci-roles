@@ -1,0 +1,6 @@
+  - shell: crossdev -S -t armv7a-hardfloat-linux-gnueabi
+    args:
+      creates: /usr/armv7a-hardfloat-linux-gnueabi
+    tags:
+    - crossdev
+

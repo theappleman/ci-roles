@@ -3,3 +3,13 @@
 - include: crossdev.yml
   tags:
   - crossdev
+
+- include: armv7a.yml
+  tags:
+  - crossdev
+  - armv7a
+
+- include: avr.yml
+  tags:
+  - crossdev
+  - avr

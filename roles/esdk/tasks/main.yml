@@ -1,0 +1,5 @@
+---
+# tasks file for esdk
+- include: esdk.yml
+  tags:
+  - esdk

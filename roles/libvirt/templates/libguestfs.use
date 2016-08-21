@@ -1,0 +1,3 @@
+# required by app-emulation/libguestfs-1.28.5-r1::gentoo
+# required by libguestfs (argument)
+>=app-arch/unzip-6.0-r3 natspec

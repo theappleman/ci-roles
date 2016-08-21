@@ -1,0 +1,15 @@
+---
+-       name: USE flags for libvirt
+        template: dest=/etc/portage/package.use/libvirt src=libvirt.use
+        tags:
+        - libvirt
+
+-       name: install libvirt
+        portage: package=app-emulation/libvirt
+        tags:
+        - libvirt
+
+-       name: enable libvirt
+        service: name=libvirtd enabled=yes state=started
+        tags:
+        - libvirt

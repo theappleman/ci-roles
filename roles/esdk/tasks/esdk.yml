@@ -1,0 +1,27 @@
+  - file: name=/usr/src/esdk state=directory
+
+  - portage:
+      package: "{{ item }}"
+    with_items:
+      - bc
+
+  - git: repo=https://github.com/adapteva/epiphany-{{ item }}
+         dest=/usr/src/esdk/{{ item }}
+         bare=yes
+         update=yes
+    with_items:
+    - gcc
+    - binutils-gdb
+    - newlib
+    - cgen
+
+  - git: repo=https://github.com/adapteva/epiphany-{{ item.repo }}
+         reference=/usr/src/esdk/{{ item.repo }}
+         dest=/opt/adapteva/{{ item.name }}
+         version={{ item.branch }}
+    with_items:
+    - { repo: gcc, name: gcc, branch: epiphany-gcc-5 }
+    - { repo: binutils-gdb, name: binutils, branch: epiphany-binutils-2.25 }
+    - { repo: binutils-gdb, name: gdb, branch: epiphany-gdb-7.10 }
+    - { repo: newlib, name: newlib, branch: epiphany-newlib-2.2.0 }
+    - { repo: cgen, name: cgen, branch: epiphany-cgen-1.1-newabi }

@@ -1,0 +1,5 @@
+---
+# tasks file for fxos
+-       include: repo.yml
+        tags:
+        - repo

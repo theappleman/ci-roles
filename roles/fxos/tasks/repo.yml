@@ -1,0 +1,8 @@
+-       name: download repo
+        get_url:
+          url: https://storage.googleapis.com/git-repo-downloads/repo
+          checksum: sha1:da0514e484f74648a890c0467d61ca415379f791
+          dest: /usr/local/bin/repo
+          mode: 0755
+        tags:
+        - repo

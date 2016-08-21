@@ -1,0 +1,35 @@
+---
+  - name: USE flags for virtual/jdk
+    template:
+      dest: /etc/portage/package.use/jdk
+      src:  roles/jenkins/templates/jdk.use
+    tags:
+    - jenkins
+
+  - name: update portage (for eapi6)
+    portage:
+      package: portage
+      update: "yes"
+    tags:
+    - jenkins
+
+  - name: update eselect (for modern jdk)
+    portage:
+      package: eselect
+      update: "yes"
+    tags:
+    - jenkins
+
+  - name: update xz-utils (for libarchive)
+    portage:
+      package: xz-utils
+      update: "yes"
+    tags:
+    - jenkins
+
+  - name: install the jdk
+    portage:
+      package: virtual/jdk:1.7
+    tags:
+    - jenkins
+

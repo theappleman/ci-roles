@@ -1,0 +1,25 @@
+---
+-       name: Keywords for libguestfs
+        lineinfile: state=present dest=/etc/portage/package.accept_keywords line={{item}}
+        with_items:
+        - =app-emulation/libguestfs-appliance-1.28.1-r1 ~amd64
+        - =app-emulation/libguestfs-1.28.5-r1 ~amd64
+        - =app-arch/lzma-9.20 ~amd64
+        - =app-arch/lzma-9.20-r1 ~amd64
+        tags:
+        - libguestfs
+
+-       name: USE flags for libguestfs
+        template: dest=/etc/portage/package.use/libguestfs src=libguestfs.use
+        tags:
+        - libguestfs
+
+-       name: install libguestfs
+        portage: package=app-emulation/libguestfs
+        tags:
+        - libguestfs
+
+-       name: update environment
+        shell: env-update
+        tags:
+        - libguestfs

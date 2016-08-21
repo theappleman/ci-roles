@@ -1,0 +1,61 @@
+---
+  - file:
+      state: directory
+      path: /etc/portage/repos.conf
+    tags:
+    - crossdev
+
+  - file:
+      state: directory
+      path: "{{ item }}"
+      owner: portage
+      group: portage
+    tags:
+    - crossdev
+    with_items:
+      - /usr/local/portage-crossdev
+      - /usr/local/portage-crossdev/profiles
+      - /usr/local/portage-crossdev/metadata
+
+  - template:
+      dest: "/usr/local/portage-crossdev/{{ item.path }}"
+      src: "roles/crossdev/templates/{{ item.template }}.j2"
+      owner: portage
+      group: portage
+    with_items:
+      - { path: profiles/repo_name, template: repo_name }
+      - { path: metadata/layout.conf, template: layout.conf }
+    tags:
+    - crossdev
+
+  - template: src=roles/crossdev/templates/crossdev.conf.j2 dest=/etc/portage/repos.conf/crossdev.conf
+    tags:
+    - crossdev
+
+  - portage:
+      package: "{{ item }}"
+    with_items:
+      - crossdev
+      - u-boot-tools
+      - dtc
+    tags:
+    - crossdev
+
+  - shell: crossdev -S -t armv7a-hardfloat-linux-gnueabi
+    args:
+      creates: /usr/armv7a-hardfloat-linux-gnueabi
+    tags:
+    - crossdev
+
+  - shell: crossdev -v -s1 --gcc 4.6.4 --binutils 2.21.1-r1 --without-headers --target avr
+    environment:
+      USE: multilib -cxx
+
+  - shell: crossdev -v -s4 --gcc 4.6.4 --binutils 2.21.1-r1 --libc 1.8.0 --target avr
+    environment:
+      USE: multilib cxx
+
+  - file:
+      path: /usr/avr/lib/ldscripts
+      src: /usr/x86_64-pc-linux-gnu/avr/lib/ldscripts
+      state: link

@@ -1,0 +1,30 @@
+---
+- name: Install catalyst
+  portage: package={{ item }}
+  with_items:
+  - dev-util/catalyst
+  - dev-python/httplib2
+
+- name: Create catalyst directories
+  file: state=directory path={{ item }}
+  with_items:
+  - /var/tmp/catalyst/builds/default
+  - /release
+
+- name: fetch latest stage3 name from
+  uri: url=http://distfiles.gentoo.org/releases/amd64/autobuilds/latest-stage3-amd64.txt return_content=yes
+  register: latest
+
+- name: download releng specs
+  git: repo=https://anongit.gentoo.org/git/proj/releng.git dest=/release/releng
+
+- name: register portage snapshot
+  stat: path=/var/tmp/catalyst/snapshots/portage-latest.tar.bz2
+  register: snapshot
+
+- name: make portage snapshot
+  shell: catalyst -s latest
+  when: not '{{ snapshot.stat.exists }}'
+
+- name: show me the basename
+  shell: echo '{{ latest.content }}'

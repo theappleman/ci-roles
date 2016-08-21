@@ -1,0 +1,20 @@
+---
+- portage: package=sys-fs/udev state=absent
+  register: removeudev
+  tags:
+  - systemd
+
+- portage: package=virtual/udev state=absent
+  when: removeudev|changed
+  tags:
+  - systemd
+
+- name: set systemd profile
+  shell: eselect profile set default/linux/amd64/13.0/systemd
+  tags:
+  - systemd
+
+- portage: package=sys-apps/systemd state=present
+  tags:
+  - systemd
+

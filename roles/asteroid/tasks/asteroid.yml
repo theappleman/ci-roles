@@ -1,0 +1,26 @@
+---
+-       name: Set python USE with sqlite support
+        lineinfile: dest=/etc/portage/package.use/python line="dev-lang/python sqlite" create=yes
+        register: python
+        tags:
+        - asteroid
+
+-       name: enable python support
+        portage: package=dev-lang/python newuse=yes update=yes changed_use=yes
+        when: python|changed
+        tags:
+        - asteroid
+
+-       name: install bitbake required packages
+        portage: package={{ item }}
+        with_items:
+        -       diffstat
+        -       chrpath
+        -       dev-vcs/git
+        tags:
+        - asteroid
+
+-       name: create unprivileged user
+        user: name=asteroid state=present password="$6$rounds=656000$ScbliTfuXGPTqPD8$XjghRZljRT18Hci.QHVGHoHM/HBbjH4SE2wRB8XtI4ikhUszEZSLBfveyZzEWL9O4QiLtWQteJY78GG2HkyhQ0"
+        tags:
+        - asteroid

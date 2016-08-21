@@ -1,0 +1,5 @@
+---
+# tasks file for catalyst
+- include: catalyst.yml
+  tags:
+  - catalyst

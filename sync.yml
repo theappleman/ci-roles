@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+  - lineinfile: dest=/etc/resolv.conf line="nameserver 8.8.8.8"
+  - lineinfile: dest=/etc/resolv.conf line="nameserver 8.8.4.4"
+
+  - file: state=file name=/.ansible-sync
+    register: sync
+    ignore_errors: yes
+  - portage: sync=yes
+    when: sync|failed
+  - file: state=touch name=/.ansible-sync
+
+  - shell: mkfs.ext4 /dev/xvde1
+    ignore_errors: true
+  - shell: mount /dev/xvde1 /home
+    ignore_errors: true

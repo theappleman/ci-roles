@@ -17,6 +17,7 @@
         -       diffstat
         -       chrpath
         -       dev-vcs/git
+        -       cpio
         tags:
         - asteroid
 

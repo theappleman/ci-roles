@@ -1,0 +1,2 @@
+-       name: install android-tools
+        portage: package=android-tools

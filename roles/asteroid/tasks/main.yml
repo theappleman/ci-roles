@@ -3,3 +3,6 @@
 - include: asteroid.yml
   tags:
   - asteroid
+- include: ncurses.yml
+- include: udev.yml
+- include: android.yml

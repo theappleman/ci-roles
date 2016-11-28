@@ -1,0 +1,8 @@
+-       name: udev rules
+        copy: src=51-android.rules
+              dest=/etc/udev/rules.d/51-android.rules
+        register: android_rules
+
+-       name: reload udev
+        shell: udevadm control --reload-rules && udevadm trigger --action=change
+        when: android_rules|changed

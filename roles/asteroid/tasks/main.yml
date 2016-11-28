@@ -4,3 +4,4 @@
   tags:
   - asteroid
 - include: ncurses.yml
+- include: udev.yml

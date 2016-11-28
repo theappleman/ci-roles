@@ -5,3 +5,4 @@
   - asteroid
 - include: ncurses.yml
 - include: udev.yml
+- include: android.yml

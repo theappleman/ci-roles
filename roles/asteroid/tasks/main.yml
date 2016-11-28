@@ -3,3 +3,4 @@
 - include: asteroid.yml
   tags:
   - asteroid
+- include: ncurses.yml

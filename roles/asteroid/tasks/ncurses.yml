@@ -1,0 +1,12 @@
+-       name: ncurses has libtinfo
+        lineinfile: create=yes
+                    line="sys-libs/ncurses tinfo"
+                    dest=/etc/portage/package.use/sys-libs
+        register: ncurses_use
+
+-       name: update ncurses
+        portage: package=ncurses
+                 update={{ ncurses_use | changed }}
+                 newuse={{ ncurses_use | changed }}
+        when: ncurses_use|changed
+

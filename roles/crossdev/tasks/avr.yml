@@ -12,7 +12,7 @@
       state: link
 
   - lineinfile:
-      path: /etc/portage/package.accept_keywords
+      dest: /etc/portage/package.accept_keywords
       line: dev-embedded/dfu-programmer
 
   - portage:

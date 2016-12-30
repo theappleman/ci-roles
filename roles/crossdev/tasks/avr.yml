@@ -11,3 +11,9 @@
       src: /usr/x86_64-pc-linux-gnu/avr/lib/ldscripts
       state: link
 
+  - lineinfile:
+      path: /etc/portage/package.accept_keywords
+      line: dev-embedded/dfu-programmer
+
+  - portage:
+      package: dfu-programmer

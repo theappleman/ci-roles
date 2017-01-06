@@ -23,6 +23,7 @@
 
 -       name: create unprivileged user
         user: name=asteroid state=present password="$6$rounds=656000$ScbliTfuXGPTqPD8$XjghRZljRT18Hci.QHVGHoHM/HBbjH4SE2wRB8XtI4ikhUszEZSLBfveyZzEWL9O4QiLtWQteJY78GG2HkyhQ0"
+        when: user == "asteroid"
         tags:
         - asteroid
 

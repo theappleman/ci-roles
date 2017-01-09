@@ -4,3 +4,9 @@
     tags:
     - crossdev
 
+  - lineinfile:
+      dest: /etc/portage/package.accept_keywords
+      line: sys-boot/vboot-utils
+
+  - portage:
+      package: sys-boot/vboot-utils

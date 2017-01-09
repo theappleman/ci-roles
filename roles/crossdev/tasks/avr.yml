@@ -1,10 +1,6 @@
-  - shell: crossdev -v -s1 --gcc 4.6.4 --binutils 2.21.1-r1 --without-headers --target avr
+  - shell: crossdev -s4 -S --target avr
     environment:
-      USE: multilib -cxx
-
-  - shell: crossdev -v -s4 --gcc 4.6.4 --binutils 2.21.1-r1 --libc 1.8.0 --target avr
-    environment:
-      USE: multilib cxx
+      USE: -openmp -hardened -sanitize -vtv
 
   - file:
       path: /usr/avr/lib/ldscripts

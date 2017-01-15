@@ -1,4 +1,6 @@
   - shell: crossdev -s4 -S --target avr
+    args:
+      creates: /usr/avr
     environment:
       USE: -openmp -hardened -sanitize -vtv
 

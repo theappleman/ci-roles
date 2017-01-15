@@ -1,0 +1,3 @@
+  - shell: crossdev -S -t armv6j-hardfloat-linux-gnueabi
+    args:
+      creates: /usr/armv6j-hardfloat-linux-gnueabi

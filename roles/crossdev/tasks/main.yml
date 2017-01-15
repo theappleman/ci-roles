@@ -13,3 +13,8 @@
   tags:
   - crossdev
   - avr
+
+- include: armv6j.yml
+  tags:
+  - crossdev
+  - armv6j

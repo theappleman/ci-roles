@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  gather_facts: false
+  roles:
+  - jenkins
+  - asteroid
+  - systemd
+  - fxos
+  - libvirt
+  - crossdev

@@ -3,7 +3,7 @@
         lineinfile: state=present dest=/etc/portage/package.accept_keywords/app-emulation line={{item}} create=yes
         with_items:
         - =app-emulation/libguestfs-appliance-1.28.1-r1 ~amd64
-        - =app-emulation/libguestfs-1.28.5-r1 ~amd64
+        - =app-emulation/libguestfs-1.28.5-r2 ~amd64
         - =app-arch/lzma-9.20-r1 ~amd64
         tags:
         - libguestfs

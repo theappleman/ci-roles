@@ -10,8 +10,9 @@
       state: link
 
   - lineinfile:
-      dest: /etc/portage/package.accept_keywords
+      dest: /etc/portage/package.accept_keywords/dev-embedded
       line: dev-embedded/dfu-programmer
+      create: yes
 
   - portage:
       package: dfu-programmer

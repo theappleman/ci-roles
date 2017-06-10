@@ -5,8 +5,9 @@
     - crossdev
 
   - lineinfile:
-      dest: /etc/portage/package.accept_keywords
+      dest: /etc/portage/package.accept_keywords/sys-boot
       line: sys-boot/vboot-utils
+      create: yes
 
   - portage:
       package: sys-boot/vboot-utils

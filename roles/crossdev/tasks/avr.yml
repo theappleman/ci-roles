@@ -1,4 +1,4 @@
-  - shell: crossdev -s4 -S --target avr
+  - shell: crossdev -s4 -S --target avr --gcc 4.9.4
     args:
       creates: /usr/avr
     environment:
